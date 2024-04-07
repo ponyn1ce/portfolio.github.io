@@ -1,0 +1,578 @@
+/* Суть проекта является создание портфолио на базе ксс и штмл
+Я буду максимально подробно и при этом для собсвтенного понимания
+расписывать каждую строчку из данного видеоурока. Портфолио создано 
+при помощи @Cooding With Topchy. Большое спасибо этому человеку за его
+труд. Я смотрел много разных гайдеров, но этот человек делает на мой взгляд
+самые понятные и интересные ролики. Никакой воды, максимум информации. В общем я буду писать
+максимально подробную информацию по каждой из строчки, чтобы сделать код максимально понятным 
+и возможным для дальнейшего редактирования или вспоминания тех или иных функций и для чего они используются. */
+
+
+*{      /*универсальный селектр */
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    text-transform: capitalize;
+        /* текст трансформ будет именно таким, чтобы каждая первая буква была большой */
+    transition: all .2s linear;
+}
+
+
+    /* какой то хуй, пока не понятно для чего нужен, псевод селектр*/
+:root {
+        /* сразу сюда будем добавлять переменные */
+        /* функция нужна для того, чтобы задать основной цвет для моего сайта */
+    --main-clr:deepskyblue;
+
+    --box-shadow: 0rem/*по вертикали*/ .5rem/*по горизонтали*/ .5rem/*размытие*/ rgba(0,0,0,.3);
+            /* тень с ярким оттенком */
+    --glowing-bxs: 0 0 .1rem deepskyblue,
+        0 0 .2rem deepskyblue,
+        0 0 .3rem deepskyblue,
+        0 0 .5rem deepskyblue;
+
+    /* создаем заголовки для каждой секции, они должны быть адаптивными, поэтому будем использовать значение calc.*/
+    /*минимальное значение 25, максимальное 50*/
+    --hadding: calc(25px + (50 - 25)*((100vw - 300px) / (1500 - 300)));
+    --big-fz: calc(30px + (100 - 30) * ((100vw - 300px) / (1500 - 300)));
+    --large-fz: calc(30px + (80 - 30)* ((100vw - 300px) / (1500 - 300)));
+    --medium-fz: calc(16px + (20 - 16)* ((100vw - 300px) / (1500 - 300)));
+    --small-fz: calc(12px + (16 - 12)* ((100vw - 300px) / (1500 - 300)));
+    --h3-fz: calc(14px + (25 - 14)* ((100vw - 300px)/ (1500 - 300)));
+    --user-name-fz: calc(14px + (30 - 14)* ((100vw - 300px) / (1500 - 300)));
+    --info-box-fz: calc(14px + (40 - 14)* ((100vw - 300px) / (1500 - 300)));
+
+        /*Эта хуйня(Размеры текстов(или нет)) предназначена для того, чтобы экономить мне время. Были заранее
+        написаны переменные, которые мы в будущем будем использовать и они будут автоматически применяться
+        для функций. Короче говоря заранее прописали все свойства, чтобы в будущем не тратить на это дохуя времени */
+}       
+
+/* обращаемся к html, чтобы задать параметры странице и удобнее использовать переменные rem*/
+
+html{
+    font-size: 62.5%; 
+    overflow-x: hidden;
+    scroll-behavior: smooth; /*для более плавного переключения по секциям*/
+}
+
+img{
+    max-width: 100%;
+}
+
+body{
+    background: #222;
+    padding-left: 35rem; /*чтобы наш контент, который будет находиться вне главного меню не задевал само меню, мы
+    должны сдлеать отступ, 35рем именно потому что толщина самого меню 35. Логично сука*/
+}
+
+section{
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/*стилизуем кнопку*/
+.btn {
+    padding: 0.7rem 3rem;
+    background: #0d1117;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    font-size: var(--medium-fz);
+}
+
+.btn i {
+    padding: 0rem 0.5rem;
+    font-size: var(--small-fz);
+}
+.btn:hover{
+    background: var(--main-clr);
+}
+
+
+/* добавляем пользовательную прокрутку через сайт данного ютубера
+link: https://codingwithtopchiy.github.io/scrollbar.selectors.github.io/ */
+
+body {
+    --sb-track-color: #222;
+    --sb-thumb-color: deepskyblue;
+    --sb-size: 1rem;
+}
+
+body::-webkit-scrollbar {
+    width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 1rem;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 1rem;
+}
+
+/* header section start */
+
+        /* обращаемся в хедер и настраиваем */
+    header{
+        position:fixed; /*фиксируем фотографию*/
+        top: 0; /*высота*/
+        left: 0; /*отступ слева*/
+        height: 100%; /*ширина*/
+        width: 35rem; /*высота*/
+        background: #0d1117;
+        display: flex;
+        justify-content: center;/*центруем вообще все*/
+        align-items: center; /*центруем контент*/
+        flex-flow: column; /*размещение будет в колонку*/
+        text-align: center;/*центруем текст*/
+        z-index: 1000; /*указываем такое значние, чтобы этот блок был поверх всех других*/
+    }
+
+    header .user img{ /*обращаемся не посредственно к самой фотографии, чтобы изменить ее размер и добавить бордер*/
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%; /*ОБВОДКА!*/
+        object-fit: cover;
+        margin-bottom: 1rem;
+        /*добавляем границу отступ снизу от имени*/
+        border: .7rem solid var(--main-clr);
+        /*бляя..., вот это нихуя себе :)*/
+        box-shadow: var(--glowing-bxs); /*тень для элемента*/
+    }
+
+        /*добавляем имя*/
+    header .user .name {
+        color: #fff;
+        font-size: var(--user-name-fz);
+    }
+
+        /*обращаемся к тексту ниже*/
+    header .user p{
+        color: #fff;
+        font-size: var(--medium-fz);
+    }
+
+    header .navbar {
+        width: 100%; /*указываем размер кнопок*/
+    }
+
+    header .navbar ul{
+        list-style: none; /*убираем маркеры*/
+        padding: 1rem 3rem;
+    }
+
+    header .navbar ul li a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none; /*убираем подчеркивание у ссылок*/
+        margin: 1.5rem 0rem; /*указываем отступый*/
+        background: #333;
+        color: #fff;    
+        font-size: var(--medium-fz);
+        border-radius: 1rem;
+    }
+
+    header .navbar ul li a:hover { 
+            /*указываем псевдо селектор для того, чтобы принаведении на кнопки они меняли цвет на заданный в этой переменной */
+        background: var(--main-clr);
+    }
+/* header section end */
+
+
+/*Первая часть готова, у нас есть АХУЕВШЕГО РАЗМАХА меню, я уже кончаю с нее, но это только начало.
+Теперь же мы будем делать адаптивное меню, чтобы были все плюшки изменения разрешения, ничего сложного, но
+как всегда поебаться придеться знатно, короче летс го, я все так же буду комментировать, чтобы ничего не забыть*/
+
+#menu {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    color: #fff;
+    background: #333;
+    cursor: pointer;
+    font-size: var(--medium-fz);
+    padding: 1rem 1.5rem; /*einrückung hinzufügen*/
+    z-index: 1000; /*hinzufügen z-index,damit dieses burger immer ober wird*/
+    border-radius: .5rem;
+    display: none; /*скрыли кнопку, чтобы она была видна только для мобильной версии*/
+}
+
+/*указываем правило по которым кнопка будет появляться в определенное разрешение*/
+
+/* media queries */
+    @media (max-width: 1200px) {
+        .home{
+        padding: 1rem 4rem;
+        }
+    
+
+    @media (max-width: 991px)   {
+        header {
+        left: -120%;
+
+        }
+    }
+
+    #menu {
+        display: block;
+    }
+        /*у нас все получилось, но теперь нужно добавить фишку, с помощью которой, когда мы открываем бургер появлялся
+        крестик вместо самого бургера*/
+    header.active {
+        left: 0%;
+        /*эту хуйню мы будем использовать для джавы скрипе чтобы что то появлялось*/
+    }
+
+    body {
+        padding: 0;
+        /* необходимо для того чтобы у нас адаптировался текст и сам сайт, когда он переходит в мобильную версию */
+    }
+    }
+
+    @media (max-width: 400px)  {
+        header {
+            width: 100vw;
+        }
+    }
+/*Полностью завершена работа с главным меню, теперь надо приступать к работе с секциями.*/
+
+/* home section start  */
+
+    .home {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0rem 15rem;
+    }
+
+    /* вот с этого момента все пошло по пизде */
+
+    .home .container {
+        display: flex;
+    }
+
+    .home h3 {
+        font-size: var(--big-fz);
+        color: #fff;
+    }
+
+
+    .home h3 {
+        font-size: var(--big-fz);
+        color: #fff;
+    }
+    
+    .home .container .first-text {
+        font-size: var(--large-fz);
+        color: #fff;
+    }
+    
+    .home .container {
+        height: 9rem;
+        line-height: 9rem;
+        overflow: hidden; /*убирает список слов, которые не помещяются в одну строчку, короче говоря лишнее нахуй*/
+        }
+        
+    .home .container .second-text li {
+        list-style: none; /*убираем маркеры*/
+        font-size: var(--large-fz);
+        color: var(--main-clr);
+        padding: 0rem 2rem;
+        text-shadow: 0 0 1rem var(--main-clr); /*свечение сзади текста*/
+        position: relative; /**/
+        top: 0;
+        animation: slide 8s steps(4) infinite,color 7s infinite; 
+        /*добавляем аниацию, она нужна для того, чтобы была смена слов.
+        позволяет нам понять какая анимация будет происходить, 8 секунд - это продолжительность слова, степс - шаги,
+        сколько слов будеть меняться, инфинити - означает, что анимация будет происходить бессконечно. */
+    }
+        
+    @keyframes slide {
+        /*создаем анимацию сами, не заложено скриптом с самого начала*/
+        100% {
+            top: -36rem;
+        }
+        }
+        
+    @keyframes color {
+        100%{
+            filter: hue-rotate(360deg);
+        }
+    } 
+        
+        /*По итогу данной работы текст пытается адаптироваться, но при сильно маленьком разрешении он не центруется из
+        за чего он не находиться по середине и есть большой отступ. Сейчас это будем исправлять, но для начала нам надо
+        закончить полностью с параграфом, поэтому приступаем сначала к нему, а потом уже и к адаптации*/
+        
+    .home p{
+        font-size: var(--small-fz);
+        color: #fff;
+        padding: 1rem 0rem;
+    }
+
+
+        /* Из за того что мы добавили пединг 35рем в падинг у нас не получается адаптировать сайт, нам нужно
+        это исправить, добавив другую переменную. Нужно обратиться к бади в нашем мини-алгоритме медиа  */
+
+        /* У нас перекрывается заголовок, это связано с тем, что мы не совсем корректно добавили правило в наш 
+        мини-алгоритм медиа. Нам нужно добавить еще одно правило, которое нужно для разрешения более чем 1200рх
+        и тогда все исчезнет */
+/* home section end  */
+
+/* приступаем к созданию следющей секции About me */
+
+/* About me section start */
+
+    .heading {
+        text-align: center;
+        margin: 3rem 0rem;
+        font-size: var(--hadding);
+        padding: 1rem;
+        color: #fff;
+        border-bottom: .1rem solid #fff4;
+    }
+
+    .heading span {
+        color:var(--main-clr);
+    }
+
+    .about .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; /* Это нужно для того, чтобы был перенос при уменьшении области просмотра*/
+        padding: 1rem 0rem;
+    }
+
+    .about .row .info {
+        flex: 1 1 50rem; /* в душе не ебу что это, но это позволило раздвинуть по сторонам блоки */
+        padding: 2rem 1rem;
+        padding-left: 6rem;
+    }
+
+    .about .row .info h4 {
+        font-size: var(--medium-fz);
+        color: var(--main-clr);
+        padding: 1rem 0rem;
+    }
+
+    .about .row .info h4 span {
+        color: #fff;
+        padding: 0rem 0.5em;
+    }
+
+    .about .row .infobox {
+        flex: 1 1 50rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .about .row .infobox .box{
+        flex: 1 1 20rem;
+        background: #0d1117;
+        text-align: center;
+            /* чтобы легче запомнить в чем отличие между педдинг и маргинможно просто говорить, что: */
+        padding: 2rem;  /* внутренние отступы */
+        margin: 2rem;  /* внешние отступы */
+    }
+
+    .about .row .infobox .box span {
+        color:var(--main-clr);
+        font-size: var(--info-box-fz);
+    }
+
+    .about .row .infobox .box h3 {
+        color: #fff;
+        font-size: var(--h3-fz);
+    }
+
+/* About Me section end  */
+
+/* Education section start */
+
+    .education .box-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 1rem 0rem;
+        padding-left: 3rem;
+    }
+
+    .education .box-container .box {
+        flex: 1 1 30rem;
+        margin: 4rem 1rem;
+        padding-left: 4rem;
+        border-left: 0.2rem solid #fff;
+        position: relative;
+    }
+
+    .education .box-container .box i {
+        position: absolute;
+        top: -1.5rem;
+        left: -2.5rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        line-height: 5rem;
+        text-align:center;
+        color: #fff;
+        background: var(--main-clr);
+        font-size: var(--medium-fz);
+        box-shadow: var(--glowing-bxs);
+    }
+
+    .education .box-container .box span {
+        background: #0d1117;
+        border-radius: 5rem;
+        padding: 0.5rem 2.5rem;
+        color: #fff;
+        font-size: 1.5rem;
+        /* размер будет маленький и его не нужно адаптироваться
+        потому что когда мы будем уменьшать область просмотра, мы хотим
+        чтобы размер не уменьшался и оставался видимым */
+    }
+
+    .education .box-container .box h3 {
+        font-size: var(--medium-fz);
+        color: #fff;
+        padding-top: 1.5rem;
+    }
+
+    .education .box-container .box p {
+        font-size: 1.5rem;
+        color: #fff;
+        padding: 1rem 0rem;
+    }
+
+/* .education section end  */
+
+/* portfolio section srat  */
+
+    .portfolio .box-container{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1rem 0rem;
+        padding-left: 3rem;
+    }
+
+    .portfolio .box-container .box {
+        flex: 1 1 25rem;
+        height: 25rem;
+        border-radius: 2rem;
+        border: .5rem solid var(--main-clr);
+        margin: 2.5rem;
+        box-shadow: var(--glowing-bxs);
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .portfolio .box-container .box img {
+        /* это нужно для того, чтобы изображения были растянуты по всей
+        площади рамки */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;  /* Это нужно для того, чтобы картинка
+        была внутри самой рамки, а не сверху. */
+
+    }
+
+    .portfolio .box-container .box:hover img {
+        transform: scale(1.1); /* трансформирует картинку, в данном
+        случае увеличивает на 1.1 раз */
+    }
+
+/* Portfolio section end  */
+
+/* Contact section start  */
+    .contact .row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .contact .row .content {
+        flex: 1 1 30rem;
+        padding: 4rem;
+        padding-bottom: 0;
+
+    }
+
+    .contact .row .content h3{
+        color: #fff;
+        font-size: var(--h3-fz);
+    }
+
+
+    .contact .row .content .info h4 {
+        color: #fff;
+        font-size: var(--small-fz);
+        text-transform: none;
+        margin: 1.5rem 0rem;
+        padding: 1rem;
+    }
+
+    .contact .row .content .info i{
+        color: var(--main-clr);
+        padding-right: 1rem;
+    }
+
+    .contact .row form {
+        flex: 1 1 45rem;
+        padding: 2rem;
+        margin: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .contact .row form .input-box {
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem;
+        background-color: #0d1117;
+        color: #fff;
+        text-transform: none;
+    }
+
+    .contact .row form textarea {
+        height: 20rem;
+        resize: none;  /* добавляем эту функцию, чтобы нельзя было 
+        изменять окно ввода сообщения*/
+
+    }
+
+/* Contact section end  */
+
+/* footer section start  */
+    .social-links {
+        text-align: center;
+        padding: 0rem 0rem 3rem;
+    }
+
+    .social-links a {
+        margin: 0rem 0.4rem;
+        width: 4.5rem;
+        height: 4.5rem;
+        line-height: 4.5rem;
+        background-color: #fff;
+        text-decoration: none;
+        border-radius: 50%;
+        color: #000;
+        font-size: var(--medium-fz);
+    }
+
+    .social-links a:hover{
+        background-color: var(--main-clr);
+        color: #fff;
+        box-shadow: var(--glowing-bxs);
+    }
+
+/* footer section end  */

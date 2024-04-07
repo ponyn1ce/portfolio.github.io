@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+
+    <!-- custom style css link(css)-->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- font link(text) -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- font awesome link (icons) very importmant!!!!-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+<!-- header section start -->
+    <header>
+        <div class="user">
+            <img src="/img/user.jpg">
+            <h3 class="name">Andrei Belousov</h3>
+            <p>Front-End Developer</p>
+        </div>
+
+
+        <nav class="navbar">
+
+            <ul>
+                <li><a href="#home">home</a><li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div id="menu" class="fas fa-bars"></div>
+    <!-- После того, как мы закончили стилизовывать мое меню мы приступаем к адаптированию самого меню -->
+<!-- header section end -->
+
+<!-- home section start -->
+    <!-- приступаем к работе с основным сектором "Дом"  -->
+<section id="home" class="home"> 
+    <h3>Halo!</h3>
+<div class="container">
+    <span class="first-text">I'm</span>
+    <ul class="second-text">
+        <li><span>Developer</span></li>
+        <li><span>Streamer</span></li>
+        <li><span>Youtuber</span></li>
+        <li><span>Freelancer</span></li>
+    </ul>
+</div>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A nisi in, magnam doloremque asperiores nam earum necessitatibus! Nesciunt veniam, pariatur molestiae, alias quia cumque recusandae accusamus voluptatibus fugiat qui at?
+</p>
+
+<a href="#about">
+        <button class="btn">About me <i class="fas fa-user"></i></button>
+</a>
+</section>
+
+    <!-- home section end  -->
+
+    <!-- About section start  -->
+    <section id="about" class="about">
+        <!-- создаем заголовок для секции -->
+        <h3 class="heading"><span>About</span> Me</h3>
+        <!-- создаем диф для размещения информации -->
+        <div class="row">
+            <!-- диф для краткой информации, в которой будет описано мое имя, возвраст, профессия, квалификация
+            так же здесь будет создана кнопка, при нажатии на которую можно скачать краткое резюме в виду страницы -->
+
+            <div class="info">
+                <h4><span>name:</span>Andrei Belousov</h4>
+                <h4><span>age:</span>21</h4>
+                <h4><span>profession:</span>Developer</h4>
+                <h4><span>qualification:</span>junior</h4>
+                <h4><span>launguages:</span>Russian, English, Deutsch</h4>
+                <!-- создаем заголовок, в котором бдует сама кнопка, так же добавляем туда функцию "скачать", можем
+                переименовать файл, который люди будут скачивать в свое имя, что я и сделал, считаю это куда приемлемым -->
+                <a href="img/user.jpg" download="resume_cv.jpg">
+                    <button class="btn">Download CV <i class="fas fa-download"></i></button>
+                </a>
+            </div>
+            <!-- добавляем диф, в котором будет дополнительная и краткая информация о моих уже готовых заказах 
+            все эти дифы нужны для того, чтобы разделить контент на блоки и уже в последствии их по отдельности 
+            редактировать. Так же они помещаны в один самый самый большой диф. Это нужно для того, чтобы их в последствии
+            можно было стилизовать под какие то единые стандарты, например для адаптации или выставления цвета-->
+            <div class="infobox">
+                <div class="box">
+                    <span>2+</span>
+                    <h3>years of experience</h3>
+                </div>
+
+                <div class="box">
+                    <span>3</span>
+                    <h3>projects</h3>
+                </div>
+
+                <div class="box">
+                    <span>3</span>
+                    <h3>clients</h3>
+                </div>
+                <div class="box">
+                    <span>4</span>
+                    <h3>launguages know</h3>
+                </div>
+                <div class="box">
+                    <span>3</span>
+                    <h3>launguages support</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+    <!-- После того, как закончили редактировать эту залупу, пора приступать к их стилизованию, поэтому переходим в ксс -->
+<!-- About section end  -->
+
+<!-- Education section start  -->
+
+    <!-- секция преднозначена для описания моих достижений в сфере учебы -->
+
+    <!-- Создаем функцию едюкейшн, в котором будет сама секция -->
+<education id="education" class="education">
+    <!-- создем внутри этой функции класс заголовка, в котором так же будет спан и соотвественно заголовок -->
+    <h3 class="heading">my <span>education</span></h3>
+
+    <!-- создается функция для создания разделительной черты и кнопки -->
+    <div class="box-container">
+        <!-- создается бокс для хранения информации. Основная часть сектора, информационная  -->
+
+        <!--  main blocks with information -->
+        <div class="box">
+            <i class="fas fa-graduation-cap"></i> 
+            <span>2019</span>
+            <h3>web developer</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ratione tempora cupiditate ullam 
+                laborum nisi eum perspiciatis! Laudantium magni 
+                aspernatur eligendi culpa in cumque sunt voluptatem repellat! 
+                Sequi, voluptatem aspernatur.</p> 
+        </div>
+        <div class="box">
+            <i class="fas fa-graduation-cap"></i> 
+            <span>2020</span>
+            <h3>web developer</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ratione tempora cupiditate ullam 
+                laborum nisi eum perspiciatis! Laudantium magni 
+                aspernatur eligendi culpa in cumque sunt voluptatem repellat! 
+                Sequi, voluptatem aspernatur.</p> 
+        </div>
+        <div class="box">
+            <i class="fas fa-graduation-cap"></i> 
+            <span>2021</span>
+            <h3>web developer</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ratione tempora cupiditate ullam 
+                laborum nisi eum perspiciatis! Laudantium magni 
+                aspernatur eligendi culpa in cumque sunt voluptatem repellat! 
+                Sequi, voluptatem aspernatur.</p> 
+        </div>
+        <div class="box">
+            <i class="fas fa-graduation-cap"></i> 
+            <span>2022</span>
+            <h3>web developer</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ratione tempora cupiditate ullam 
+                laborum nisi eum perspiciatis! Laudantium magni 
+                aspernatur eligendi culpa in cumque sunt voluptatem repellat! 
+                Sequi, voluptatem aspernatur.</p> 
+        </div>
+        <div class="box">
+            <i class="fas fa-graduation-cap"></i> 
+            <span>2023</span>
+            <h3>web developer</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ratione tempora cupiditate ullam 
+                laborum nisi eum perspiciatis! Laudantium magni 
+                aspernatur eligendi culpa in cumque sunt voluptatem repellat! 
+                Sequi, voluptatem aspernatur.</p> 
+        </div>
+        <div class="box">
+            <i class="fas fa-graduation-cap"></i> 
+            <span>2024</span>
+            <h3>web developer</h3>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ratione tempora cupiditate ullam 
+                laborum nisi eum perspiciatis! Laudantium magni 
+                aspernatur eligendi culpa in cumque sunt voluptatem repellat! 
+                Sequi, voluptatem aspernatur.</p> 
+        </div>
+        
+    </div>
+
+</education>
+
+<!-- Education section end  -->
+
+<!-- Portfolio section start -->
+    <section id="portfolio" class="portfolio">
+        <h3 class="heading">my <span>projects</span></h3>
+        <div class="box-container">
+            <div class="box">
+                <img src="/img/user.jpg">
+            </div>
+            <div class="box">
+                <img src="/img/user.jpg">
+            </div>
+            <div class="box">
+                <img src="/img/user.jpg">
+            </div>
+            <div class="box">
+                <img src="/img/user.jpg">
+            </div>
+            <div class="box">
+                <img src="/img/user.jpg">
+            </div>
+            <div class="box">
+                <img src="/img/user.jpg">
+            </div>
+            
+        </div>
+
+    </section>
+
+<!-- Portfolio section end  -->
+
+<!-- Contact section start  -->
+<section id="contact" class="contact">
+    <h3 class="heading">contact <span>me</span></h3>
+
+    <div class="row">
+        <div class="content">
+            <h3>contact information</h3>
+
+            <div class="info">
+                <h4><i class="fas fa-envelope"></i>belousovandrei14@yandex.ru</h4>
+                <h4><i class="fas fa-phone"></i>+79267020012</h4>
+                <h4><i class="fas fa-map-marker-alt"></i>Moskau Russia</h4>
+            </div>
+
+        <!-- Создаем форму--> <form action="#"> 
+            <input type="text" class="input-box" placeholder="name" autocomplete="off">
+            <input type="email" class="input-box" placeholder="email" autocomplete="off">
+            <input type="text" class="input-box" placeholder="project" autocomplete="off">
+            <textarea name="" id="" cols="30" rows="10" class="input-box" placeholder="message"></textarea>
+            <button type="submit" class="btn" id="btn1">Send <i class="fas fa-paper-plane"></i></button>
+        </form>
+        </div>
+    </div>
+</section>
+
+<!-- Contact section end  -->
+
+<!-- footer section start  -->
+<div class="social-links">
+
+    <a href="https://t.me/ponyn1ce" target="_blank" class="fab fa-telegram"></a>
+    <a href="https://instagram.com/ponyn1ce" target="_blank" class="fab fa-instagram"></a>
+    <a href="https://wa.me/+79267020012" target="_blank" class="fab fa-whatsapp"></a>
+    <a href="https://www.youtube.com/@ponyn1ce" target="_blank" class="fab fa-youtube"></a>
+    <a href="https://www.twitch.tv/ponyn1ce" target="_blank" class="fab fa-twitch"></a>
+    <a href="#" class="fab fa-twitter"></a>
+
+</div>
+
+<!-- footer section end  -->
+
+<!-- script link  -->
+    <!-- приступаем к работе с джава скрипт, вообще ничего пока об этом не знаю, поэтому это будет веселый экспирианс
+    для меня -->
+<script>
+
+    let menu = document.querySelector('#menu');
+    let openmenu = document.querySelector('header');
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            openmenu.classList.toggle('active');
+        }
+    // sehr ficken gut!! Mein erste javascript arbeiten gemacht! Ich bin glucklich)))) aber arbeit mehr!
+    //das ist einfach lustig
+</script>
+</body>
+</html>
